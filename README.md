@@ -70,8 +70,21 @@ npm run dev
 
  - El puerto para la base de datos debe ser el mismo que en ./backend/.env  (se utiliza 5440 para evitar conflictos)
  - Se dispone intencionalmente de los .env.template con sus respectivos datos para hacer las pruebas
+ - En las pruebas con docker-compose, se debe redigir al nombre del servicio en la red como se describe en vite.config.ts
+ (Ver imagen a continuacion)
+ ![alt text](image-5.png)
 
 ### DEMO
+
+![alt text](image.png)
+
+![alt text](image-1.png)
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
+
+![alt text](image-4.png)
 
 ## Pendientes ...
 
