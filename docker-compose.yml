@@ -64,3 +64,4 @@ volumes:
 
 networks:
   gux-net:
+    driver: bridge
