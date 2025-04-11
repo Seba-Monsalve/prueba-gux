@@ -135,7 +135,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\opaqu\\Desktop\\prueba tech\\backend\\generated\\prisma",
+      "value": "/app/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -144,12 +144,16 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "linux-musl-openssl-3.0.x",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "linux-musl-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\opaqu\\Desktop\\prueba tech\\backend\\prisma\\schema.prisma",
+    "sourceFilePath": "/app/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -163,16 +167,17 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "POSTGRES_URL",
-        "value": "postgresql://GUX:GUX@localhost:5440/GUX"
+        "value": null
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"POSTGRES_URL\")\n}\n\nenum Estado {\n  PENDIENTE\n  COMPLETADO\n}\n\nmodel Usuario {\n  id        String   @id @default(uuid())\n  createdAt DateTime @default(now()) @db.Timestamp(6)\n  email     String   @unique\n  username  String\n  tareas    Tarea[]\n  password  String\n}\n\nmodel Tarea {\n  id             String   @id @default(uuid())\n  titulo         String\n  descripcion    String\n  fecha_creacion DateTime @default(now()) @db.Timestamp(6)\n  user           Usuario  @relation(fields: [user_id], references: [id])\n  user_id        String\n  estado         Estado   @default(PENDIENTE)\n}\n",
-  "inlineSchemaHash": "c620b34828c2f4bcd1d4ad63c15eeb7506ebe1f08efbd63a796ab10edd224176",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../generated/prisma\"\n  binaryTargets = [\"native\", \"linux-musl-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"POSTGRES_URL\")\n}\n\nenum Estado {\n  PENDIENTE\n  COMPLETADO\n}\n\nmodel Usuario {\n  id        String   @id @default(uuid())\n  createdAt DateTime @default(now()) @db.Timestamp(6)\n  email     String   @unique\n  username  String\n  tareas    Tarea[]\n  password  String\n}\n\nmodel Tarea {\n  id             String   @id @default(uuid())\n  titulo         String\n  descripcion    String\n  fecha_creacion DateTime @default(now()) @db.Timestamp(6)\n  user           Usuario  @relation(fields: [user_id], references: [id])\n  user_id        String\n  estado         Estado   @default(PENDIENTE)\n}\n",
+  "inlineSchemaHash": "1feeaeace27c3e5c00a5fb0abbf1379e56df922d95aaf1b69571f6efafc6724c",
   "copyEngine": true
 }
 config.dirname = '/'
