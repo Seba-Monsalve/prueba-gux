@@ -7,8 +7,9 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx tsx watch ./index.ts"
+    "dev:db": "npx prisma migrate deploy && npx prisma generate "
     ,"db:deploy": "npx prisma migrate deploy && npx prisma generate"
+    , "dev": "npx prisma migrate deploy && npx prisma generate && npx tsx watch ./index.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.6.0",

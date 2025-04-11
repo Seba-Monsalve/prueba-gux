@@ -4,7 +4,7 @@ import { useAuthStore } from "../store";
 import { useNavigate } from "react-router";
 
 export const Login = () => {
-  const { login, isLoading, error } = useAuthStore();
+  const { login, isLoading, error, user } = useAuthStore();
   const navigate = useNavigate();
   const [formData, setformData] = useState({
     email: "",
@@ -18,14 +18,16 @@ export const Login = () => {
       toast.error("Completar todos los campos");
       return;
     }
-    await login(email, password);
+    const { user: loggeduser } = await login(email, password);
     if (error) {
       toast.error(error);
       return;
     }
+    if (loggeduser) {
       toast.success("Login success");
       navigate("/");
     }
+  }
 
   function handleOnChange(event: any): void {
     setformData({
@@ -66,7 +68,7 @@ export const Login = () => {
           className="text-2xl p-2 bg-amber-400 rounded-lg cursor-pointer hover:opacity-80"
           type="submit"
         >
-          {isLoading ? 'Loading...' : 'Login'}
+          {isLoading ? "Loading..." : "Login"}
         </button>
       </form>
 

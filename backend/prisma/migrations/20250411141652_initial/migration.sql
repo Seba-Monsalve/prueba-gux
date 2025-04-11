@@ -3,7 +3,7 @@ CREATE TYPE "Estado" AS ENUM ('PENDIENTE', 'COMPLETADO');
 
 -- CreateTable
 CREATE TABLE "Usuario" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "createdAt" TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "email" TEXT NOT NULL,
     "username" TEXT NOT NULL,
@@ -14,11 +14,11 @@ CREATE TABLE "Usuario" (
 
 -- CreateTable
 CREATE TABLE "Tarea" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "titulo" TEXT NOT NULL,
     "descripcion" TEXT NOT NULL,
     "fecha_creacion" TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "user_id" INTEGER NOT NULL,
+    "user_id" TEXT NOT NULL,
     "estado" "Estado" NOT NULL DEFAULT 'PENDIENTE',
 
     CONSTRAINT "Tarea_pkey" PRIMARY KEY ("id")

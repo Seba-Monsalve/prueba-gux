@@ -21,8 +21,9 @@ function App() {
       <Routes>
         <Route path={"/login"} element={<Login />} />
         <Route path={"/signup"} element={<SignUp />} />
+        <Route path={"/"} element={<Home />} />
+
         <Route element={<PrivateRoutes />}>
-          <Route path={"/"} element={<Home />} />
           <Route path={"/tasks/add"} element={<AddTask />} />
           <Route path={"/tasks/update/:id"} element={<UpdateTask />} />
         </Route>

@@ -1,16 +1,11 @@
 
+# BASE DE ADTO
+docker container run --network gux-net -p 5440:5432 -e POSTGRES_DB=GUX -e POSTGRES_USER=GUX -e POSTGRES_PASSWORD=GUX -e POSTGRES_PORT=5440   --name postgres postgres
 
-docker network create gux-net
+#  backend
+docker container run --network gux-net -p 3000:3000 -e POSTGRES_URL="postgresql://GUX:GUX@postgres:5432/GUX" --name backend 20
 
-docker container run --network gux-net -p 5440:5432 
--e POSTGRES_DB=GUX 
--e POSTGRES_USER=GUX 
--e POSTGRES_PASSWORD=GUX 
--e POSTGRES_PORT=5440   --name postgres postgres
-
-
- docker container run --network gux-net -p 3000:3000 -e POSTGRES_URL="postgresql://GUX:GUX@postgres:5432/GUX" --name backend 20
-
+# FRONTEND
  docker build -t fe:v4 .
  docker container run --network gux-net -p 5173:5173 --name frontend fe:v4
 

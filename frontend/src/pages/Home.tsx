@@ -1,15 +1,23 @@
 import { useEffect } from "react";
 import { Card } from "../components";
-import { useTaskStore } from "../store";
+import { useAuthStore, useTaskStore } from "../store";
 
 export const Home = () => {
   const { tasks, isLoading, getTasks } = useTaskStore();
+  const { user } = useAuthStore();
 
   useEffect(() => {
     getTasks();
   }, []);
 
-  if (isLoading || tasks.length==0 )
+  if (!user)
+    return (
+      <div className="text-2xl text-center mt-10">
+        Debes estar haber iniciado sesion para ver las tareas
+      </div>
+    );
+
+  if (isLoading)
     return <div className="text-2xl text-center mt-10">Cargando...</div>;
 
   return (
@@ -25,7 +33,7 @@ export const Home = () => {
               description={task.descripcion}
               estado={task.estado}
               user_id={task.user_id}
-              />
+            />
           ))
         ) : (
           <h1 className="text-2xl mt-10">No hay tareas registradas </h1>

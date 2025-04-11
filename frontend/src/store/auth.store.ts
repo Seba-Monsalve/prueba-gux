@@ -78,7 +78,6 @@ export const useAuthStore = create<StoreState>(
             error: (error as any).response.data.message || "Error Login user",
           });
           return {
-            isLoading: false,
             error: (error as any).response.data.message || "Error Login user",
           };
         }
@@ -119,9 +118,10 @@ export const useAuthStore = create<StoreState>(
           set({ message, isLoading: false, user: null });
           return { message };
         } catch (error) {
+        set({ user: null, error: null, message: null, isLoading: false });
+
           return {
             error: (error as any).response.data.message || "Error logging out",
-            isLoading: false,
           };
         }
       },

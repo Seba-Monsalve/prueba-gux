@@ -4,104 +4,106 @@ Prueba tecnica de Gux para Mid level Full Stack developer
 
 ## Comenzando 🚀
 
-Descargar del repo el rpoe
-
-
-Mira **Deployment** para conocer como desplegar el proyecto.
-
+Descarga el repo
 
 ### Pre-requisitos 📋
 
 Programas / dependencias necesarias
+
 ```
-Node
-Docker
+* Node
+* Docker
+* Vite
+* VSCode
 ```
 
 ### Instalación 🔧
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
+El programa se puede ejecutar usando docker-compose o en desarrollo. para ambas se necesita docker
 
-_Dí cómo será ese paso_
+#### 1. Docker compose
 
-```
-Da un ejemplo
-```
-
-_Y repite_
+Ubicarse en la raiz del proyecto y ejecutar:
 
 ```
-hasta finalizar
+docker compose up --build
 ```
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
-
-## Ejecutando las pruebas ⚙️
-
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
+Una vez terminado, entrar a el enlace
 
 ```
-Da un ejemplo
+http://localhost:5173/
 ```
 
-### Y las pruebas de estilo de codificación ⌨️
+#### 2. Entorno desarrollo
 
-_Explica que verifican estas pruebas y por qué_
+
+#### Base de datos
+
+Levantar el container que contiene la base de datos
 
 ```
-Da un ejemplo
+docker container run  -p 5440:5432 -e POSTGRES_DB=GUX -e POSTGRES_USER=GUX -e POSTGRES_PASSWORD=GUX -e POSTGRES_PORT=5440   --name postgres postgres
+```
+##### Frotend
+
+Ubicado en la carpeta raiz ejecutar en consola con permisos de admin
+
+```
+cd .\frontend\
+npm i
+npm run dev
 ```
 
-## Despliegue 📦
+##### Backedn
 
-_Agrega notas adicionales sobre como hacer deploy_
+Ubicado en la carpeta raiz ejecutar en consola con permisos de admin
+
+```
+cd .\backend\
+npm i
+npm run dev
+```
+
+
+### Consideraciones
+
+ - El puerto para la base de datos debe ser el mismo que en ./backend/.env  (se utiliza 5440 para evitar conflictos)
+ - Se dispone intencionalmente de los .env.template con sus respectivos datos para hacer las pruebas
+
+### DEMO
+
+## Pendientes ...
+
+
+- Pruebas unitarias en Jest
+- Implementacion de middleware para validacion de jwt (por temas de tiempo se dejo el boilerplate en cada controlador)
+- CI/CD en github para la imagen
+
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
+- [NPM](https://www.npmjs.com/) - Gestor de paquetes
+- [Vite](https://vite.dev/) - Servidor desarrollo
+- [React](https://es.react.dev/) - Libreria JS
+- [Node](https://nodejs.org/en) - Runtime JS
+- [PostgreSQL](https://www.postgresql.org/) - Base de datos
+- [Docker](https://www.docker.com/) - Containers
+- [Prisma](https://www.prisma.io/) - ORM
+- [TailwindCSS](https://tailwindcss.com/) - Framework CSS
+- [Zustand](https://zustand-demo.pmnd.rs/) - Gestor de estados
+- [TailwindCSS](https://tailwindcss.com/) - Framework CSS
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
-
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
 
 ## Versionado 📌
 
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
-
+Usamos [GIT](http://github.com/) para el versionado, directo en rama master. Por temas practicos, no me guie en Gitflow
 ## Autores ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
-
-## Licencia 📄
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+- **Sebastian Monsalve** - Desarrollo full stack - [Seba Monsalve](https://github.com/Seba-Monsalve)
 
 ## Expresiones de Gratitud 🎁
 
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* Dona con cripto a esta dirección: `0xf253fc233333078436d111175e5a76a649890000`
-* etc.
-
-
+- A [Villanuevand](https://github.com/Villanuevand) por esta genial plantilla de readme
 
 ---
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
